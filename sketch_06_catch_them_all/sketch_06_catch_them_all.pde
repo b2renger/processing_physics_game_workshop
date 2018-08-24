@@ -7,6 +7,7 @@ Object : understand how to use an arraylist and instanciate aa / use for loops /
 ArrayList <Agent> agents;
 Ball balle;
 
+
 void setup() {
   size(400, 400); 
   background(0);
@@ -21,14 +22,33 @@ void setup() {
 }
 
 
+int posX = width /2;
+int posY = height/2;
+int speed = 5;
 
 void draw() {
 
   motionBlur(10);
   
+  if(keyPressed)
+  {
+      if(isUp){
+        posY = posY-speed;
+      }
+      if(isDown){
+        posY = posY+speed;
+      }
+      if(isRight){
+        posX = posX+speed;
+      }
+      if(isLeft){
+        posX = posX-speed;
+      }
+  }
+
   
-  balle.update(mouseX,mouseY, 0.015);
- 
+  
+  balle.update(posX,posY, 0.015);
   balle.display();
   
   for (int i = 0 ; i < agents.size(); i = i +1){
@@ -133,5 +153,34 @@ class Ball {
     stroke(255);
     noFill();
     ellipse(xpos, ypos, diam, diam);
+  }
+}
+
+boolean isLeft, isRight, isUp, isDown; 
+
+void keyPressed() {
+  setMove(keyCode, true);
+}
+ 
+void keyReleased() {
+  setMove(keyCode, false);
+}
+ 
+boolean setMove(int k, boolean b) {
+  switch (k) {
+  case UP:
+    return isUp = b;
+ 
+  case DOWN:
+    return isDown = b;
+ 
+  case LEFT:
+    return isLeft = b;
+ 
+  case RIGHT:
+    return isRight = b;
+ 
+  default:
+    return b;
   }
 }
