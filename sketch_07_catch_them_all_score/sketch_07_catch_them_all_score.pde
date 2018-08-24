@@ -6,6 +6,8 @@ Object : understand how to use an arraylist and instanciate aa / use for loops /
 
 ArrayList <Agent> agents;
 Ball balle;
+int score = 0;
+PFont f;
 
 void setup() {
   size(400, 400); 
@@ -18,6 +20,7 @@ void setup() {
   }
   
   balle = new Ball(mouseX,mouseY);
+  f = createFont("Arial",16,true); 
 }
 
 
@@ -27,6 +30,11 @@ int speed = 5;
 
 
 void draw() {
+  textFont(f); 
+  textAlign(LEFT);
+  text("Score : "+score,10,20); 
+
+  println(score);
 
   motionBlur(10);
   
@@ -59,6 +67,7 @@ void draw() {
     
     if (dist(balle.xpos, balle.ypos, agent.xpos, agent.ypos) < balle.diam/2){
       agents.remove(i);
+      score++;
     }
   }
   
