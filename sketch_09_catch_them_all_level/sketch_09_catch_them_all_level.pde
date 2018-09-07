@@ -9,24 +9,25 @@ ArrayList <Level> levels;
 int currentLevelID = 0;
 Level currentLevel;
 Ball balle;
+int agentNumber = 0;
 int score = 0;
 
 PFont f;
 
 void setup() {
-  size(400, 400); 
+  size(800, 800); 
   background(0);
   
   agents = new ArrayList<Agent>();
   levels = new ArrayList<Level>();
   // level 1
-  levels.add(new Level(25,50,10,new float[]{0.5, 2},50));
+  levels.add(new Level(25,5,2,new float[]{2, 6}));
   // level 2
-  levels.add(new Level(25,50,10,new float[]{2,4},100));
+  levels.add(new Level(25,10,5,new float[]{4,8}));
   currentLevel = levels.get(currentLevelID);
-  for (int i = 0 ; i < 60; i = i +1){
+ // for (int i = 0 ; i < 60; i = i +1){
     agents.add(new Agent(width/2, height/2, random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
-  }
+ // }
   
   balle = new Ball(mouseX,mouseY);
   f = createFont("Arial",16,true); 
@@ -35,7 +36,7 @@ void setup() {
 
 int posX = width /2;
 int posY = height/2;
-int speed = 5;
+int speed = 7;
 
 
 void draw() {
@@ -48,8 +49,13 @@ void draw() {
 
   motionBlur(10);
   
-  if(score-currentLevel.scoreToReach == 0 ){
-    currentLevel = levels.get(currentLevelID++);
+  if(agentNumber == 0 ){
+    nextLevel();
+  }
+  
+  // game over
+  if(score < 0 ){
+    // Open an other sketch with game over screen
   }
   
   if(keyPressed)
@@ -82,6 +88,7 @@ void draw() {
     if (dist(balle.xpos, balle.ypos, agent.xpos, agent.ypos) < balle.diam/2){
       if(!agent.isEnemy){
         score++;
+        agentNumber--;
       }else{
         score -= currentLevel.enemyDamages;
       }
@@ -89,17 +96,31 @@ void draw() {
     }
   }
   
-  if(frameCount% currentLevel.agentPopFreq ==0){
+
+}
+
+void nextLevel(){
+  currentLevelID++;
+  
+  if(currentLevelID <= (levels.size()-1)){
+    currentLevel = levels.get(currentLevelID++);
+  }else{
+    // go to win sketch
+  }
+  
+  for(int i = 0 ; i <= currentLevel.agentNumber ; i++){
     agents.add(new Agent(random(width), random(height), random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
   }
   
-  if(frameCount% currentLevel.enemyPopFreq ==0){
-      
+  
+  for(int i = 0 ; i < currentLevel.enemyNumber ; i++){
     agents.add(new Agent(random(width), random(height), random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),true));
-  } 
+  }
+  
+  agentNumber = currentLevel.agentNumber;
 }
-
-
+ 
+  
 void motionBlur(int transparency) {
   noStroke();
   fill(0, transparency);
@@ -108,21 +129,21 @@ void motionBlur(int transparency) {
 
 class Level{
   
-  public int agentPopFreq;
-  public int enemyPopFreq;
+  public int agentNumber;
+  public int enemyNumber;
   public int enemyDamages;
   public float[] agentSpeedRange;
-  public int scoreToReach;
   
-  public Level(int agentPopFreq, int enemyPopFreq, int enemyDamages, float[] agentSpeedRange,int scoreToReach){
-    this.agentPopFreq = agentPopFreq;
-    this.enemyPopFreq = enemyPopFreq;
+  public Level(int agentNumber, int enemyNumber, int enemyDamages, float[] agentSpeedRange){
+    this.agentNumber = agentNumber;
+    this.enemyNumber = enemyNumber;
     this.enemyDamages = enemyDamages;
     this.agentSpeedRange = agentSpeedRange;
-    this.scoreToReach = scoreToReach;
   }
   
 }
+
+
 
 class Agent {
   float xpos;
