@@ -11,9 +11,13 @@ Level currentLevel;
 Ball balle;
 int agentNumber = 0;
 int enemyNumber = 0;
+boolean stopAgentPop = false;
+boolean stopEnemyPop = false;
 int score = 0;
+boolean win = false;
+boolean loose = false;
 
-PFont f;
+PFont f,f2;
 
 void setup() {
   size(800, 800); 
@@ -25,13 +29,16 @@ void setup() {
   levels.add(new Level(1,25,5,25,2,new float[]{2, 6}));
   // level 2
   levels.add(new Level(2,25,10,50,5,new float[]{4,8}));
+  levels.add(new Level(10,25,10,50,5,new float[]{4,8}));
   currentLevel = levels.get(currentLevelID);
  // for (int i = 0 ; i < 60; i = i +1){
     agents.add(new Agent(width/2, height/2, random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
+    agentNumber++;
  // }
   
   balle = new Ball(mouseX,mouseY);
   f = createFont("Arial",16,true); 
+  f2 = createFont("Arial",100,true);
 }
 
 
@@ -40,11 +47,13 @@ int posY = height/2;
 int speed = 7;
 
 
-void draw() {
+void draw() { 
   fill(255);
   textFont(f); 
   textAlign(LEFT);
-  text("Score : "+score,10,20); 
+  text("Score : "+score,10,20);
+  textAlign(RIGHT);
+  text("Level : "+(currentLevelID+1),780,20);
 
   println(currentLevelID);
 
@@ -54,7 +63,7 @@ void draw() {
   
   // game over
   if(score < 0 ){
-    // Open an other sketch with game over screen
+    loose = true;
   }
   
   if(keyPressed)
@@ -95,19 +104,39 @@ void draw() {
     }
   }
   
-  if((frameCount% 25 ==0) && (agentNumber < currentLevel.agentNumber) ){
+  if((frameCount% currentLevel.agentRatePop ==0) && (agentNumber < currentLevel.agentNumber) && !stopAgentPop){
     agents.add(new Agent(random(width), random(height), random(0.5, 2),false));  
     agentNumber++;
+  }else if(!(agentNumber < currentLevel.agentNumber)){
+    stopAgentPop = true;
   }
   
-  if((frameCount% 50 ==0) && (agentNumber < currentLevel.enemyNumber)){
+  if((frameCount% currentLevel.enemyRatePop ==0) && (enemyNumber < currentLevel.enemyNumber) && !stopEnemyPop){
     agents.add(new Agent(random(width), random(height), random(0.5, 2),true));
     enemyNumber++;
+  }else if(!(enemyNumber < currentLevel.enemyNumber)){
+    stopEnemyPop = true;
   }
 
 
-  if(agentNumber == 0 ){
+  if((frameCount% currentLevel.agentRatePop ==0) && agentNumber == 0 && !win){
     nextLevel();
+  }
+  
+  // Win 
+  if(win){
+    fill(255);
+    textFont(f2); 
+    textAlign(CENTER);
+    text("YOU WIN !",400,400); 
+  }
+  
+  // Loose
+  if(loose){
+    fill(255);
+    textFont(f2); 
+    textAlign(CENTER);
+    text("GAME OVER !",400,400); 
   }
   
 }
@@ -115,10 +144,13 @@ void draw() {
 void nextLevel(){
   currentLevelID++;
   
-  if(currentLevelID <= (levels.size()-1)){
-    currentLevel = levels.get(currentLevelID++);
+  if(currentLevelID < (levels.size())){
+    currentLevel = levels.get(currentLevelID);
+    stopAgentPop = false;
+    stopEnemyPop = false;
+    
   }else{
-    // go to win sketch
+    win = true;
   }
 }
  
