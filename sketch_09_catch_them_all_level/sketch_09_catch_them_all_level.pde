@@ -10,6 +10,7 @@ int currentLevelID = 0;
 Level currentLevel;
 Ball balle;
 int agentNumber = 0;
+int enemyNumber = 0;
 int score = 0;
 
 PFont f;
@@ -21,9 +22,9 @@ void setup() {
   agents = new ArrayList<Agent>();
   levels = new ArrayList<Level>();
   // level 1
-  levels.add(new Level(25,5,2,new float[]{2, 6}));
+  levels.add(new Level(1,25,5,25,2,new float[]{2, 6}));
   // level 2
-  levels.add(new Level(25,10,5,new float[]{4,8}));
+  levels.add(new Level(2,25,10,50,5,new float[]{4,8}));
   currentLevel = levels.get(currentLevelID);
  // for (int i = 0 ; i < 60; i = i +1){
     agents.add(new Agent(width/2, height/2, random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
@@ -45,13 +46,11 @@ void draw() {
   textAlign(LEFT);
   text("Score : "+score,10,20); 
 
-  println(score);
+  println(currentLevelID);
 
   motionBlur(10);
   
-  if(agentNumber == 0 ){
-    nextLevel();
-  }
+
   
   // game over
   if(score < 0 ){
@@ -96,7 +95,21 @@ void draw() {
     }
   }
   
+  if((frameCount% 25 ==0) && (agentNumber < currentLevel.agentNumber) ){
+    agents.add(new Agent(random(width), random(height), random(0.5, 2),false));  
+    agentNumber++;
+  }
+  
+  if((frameCount% 50 ==0) && (agentNumber < currentLevel.enemyNumber)){
+    agents.add(new Agent(random(width), random(height), random(0.5, 2),true));
+    enemyNumber++;
+  }
 
+
+  if(agentNumber == 0 ){
+    nextLevel();
+  }
+  
 }
 
 void nextLevel(){
@@ -107,17 +120,6 @@ void nextLevel(){
   }else{
     // go to win sketch
   }
-  
-  for(int i = 0 ; i <= currentLevel.agentNumber ; i++){
-    agents.add(new Agent(random(width), random(height), random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
-  }
-  
-  
-  for(int i = 0 ; i < currentLevel.enemyNumber ; i++){
-    agents.add(new Agent(random(width), random(height), random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),true));
-  }
-  
-  agentNumber = currentLevel.agentNumber;
 }
  
   
@@ -130,13 +132,17 @@ void motionBlur(int transparency) {
 class Level{
   
   public int agentNumber;
+  public int agentRatePop;
   public int enemyNumber;
+  public int enemyRatePop;
   public int enemyDamages;
   public float[] agentSpeedRange;
   
-  public Level(int agentNumber, int enemyNumber, int enemyDamages, float[] agentSpeedRange){
+  public Level(int agentNumber,int agentRatePop, int enemyNumber,int enemyRatePop, int enemyDamages, float[] agentSpeedRange){
     this.agentNumber = agentNumber;
+    this.agentRatePop = agentRatePop;
     this.enemyNumber = enemyNumber;
+    this.enemyRatePop = enemyRatePop;
     this.enemyDamages = enemyDamages;
     this.agentSpeedRange = agentSpeedRange;
   }
