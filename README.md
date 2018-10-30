@@ -16,6 +16,8 @@ Voici ce à quoi vous devriez pouvoir arriver :
 
 <img src="physics_game_workshop.gif" width="480" height="480" /><br>
 
+Vous pouvez aussi retrouver les projets des game designers de l'École de Design de Nantes en première année de bachelor game design 2018 [ici](https://ateliernum.github.io/workshop_gamefromscratch_2018/)
+
 ## Contenu
 
 * [Découverte : un jeu en 33 lignes de code](https://github.com/b2renger/processing_physics_game_workshop#activit%C3%A9-de-d%C3%A9couverte-de-processing)<br>
