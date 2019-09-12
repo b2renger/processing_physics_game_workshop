@@ -35,8 +35,10 @@ void draw(){
   float xtarget = mouseX;
   float ytarget = mouseY;
   
-  xpos = (xtarget - xpos)*0.015 + xpos;
-  ypos = (ytarget - ypos)*0.015 + ypos;
+  xpos = lerp(xpos,xtarget,0.5);
+  ypos = lerp(ypos,ytarget,0.5);
+  //xpos = (xtarget - xpos)*0.015 + xpos;
+  //ypos = (ytarget - ypos)*0.015 + ypos;
   
   fill(255);
   ellipse(xpos, ypos, 15, 15);

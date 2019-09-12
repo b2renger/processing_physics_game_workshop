@@ -29,11 +29,12 @@ void setup() {
   levels.add(new Level(1,25,5,25,2,new float[]{2, 6}));
   // level 2
   levels.add(new Level(2,25,10,50,5,new float[]{4,8}));
-  levels.add(new Level(10,25,10,50,5,new float[]{4,8}));
+  // level 3
+  levels.add(new Level(3,25,10,50,5,new float[]{4,8}));
   currentLevel = levels.get(currentLevelID);
  // for (int i = 0 ; i < 60; i = i +1){
-    agents.add(new Agent(width/2, height/2, random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
-    agentNumber++;
+ //   agents.add(new Agent(width/2, height/2, random(currentLevel.agentSpeedRange[0], currentLevel.agentSpeedRange[1]),false));
+ //   agentNumber++;
  // }
   
   balle = new Ball(mouseX,mouseY);

@@ -13,7 +13,7 @@ void setup() {
   
   agents = new ArrayList<Agent>();
   
-  for (int i = 0 ; i < 60; i = i +1){
+  for (int i = 0 ; i < 1; i = i +1){
     agents.add(new Agent(width/2, height/2, random(0.5, 2)));
   }
 }
