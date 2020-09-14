@@ -2,6 +2,8 @@
 
 A small introduction to OOP using processing geared towards game designers.
 
+Vous pouvez retrouver l'ensemble du code et de ces explication sur ce dépot [github](https://github.com/b2renger/processing_physics_game_workshop)
+
 Processing est un langage de programmation basé sur java. Il est relativement simple d'accès et est destiné à être utilisé par des designer et artistes.
 
 *"Processing seeks to ruin the careers of talented designers by tempting them away from their usual tools and into the world of programming and computation. Similarly, the project is designed to turn engineers and computer scientists to less gainful employment as artists and designers."*
@@ -17,31 +19,41 @@ Voici ce à quoi vous devriez pouvoir arriver :
 <img src="physics_game_workshop.gif" width="480" height="480" /><br>
 
 Vous pouvez aussi retrouver les projets des game designers de l'École de Design de Nantes en première année de bachelor game design 2018 [ici](https://ateliernum.github.io/workshop_gamefromscratch_2018/)
+et ceux de 2019 [ici](https://ateliernum.github.io/workshop_gamefromscratch_2019/)
 
 ## Contenu
 
-* [Découverte : un jeu en 33 lignes de code](https://github.com/b2renger/processing_physics_game_workshop#activit%C3%A9-de-d%C3%A9couverte-de-processing)<br>
-* [ÉTAPE 0 : un outil de dessin](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-0--familiarisation-par-un-outil-de-dessin-simple)<br>
-* [ÉTAPE 1 : se déplacer](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-1--se-d%C3%A9placer)<br>
-* [ÉTAPE 2 : écrire des fonction sur mesure](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-2--%C3%A9crire-des-fonctions-sur-mesure)<br>
-* [ÉTAPE 3 : écrire une classe](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-3--%C3%A9crire-une-classe---la-programmation-orient%C3%A9e-objet)<br>
-* [ÉTAPE 4 : instancier 100 objet à partir d'une classe](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-4--instancier-100-objets-%C3%A0-partir-dune-classe)<br>
-* [ÉTAPE 5 : agents autonomes](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-5--les-agents-autonomes)<br>
-* [ÉTAPE 6 : écrire des conditions](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-6--la-notion-de-conditionnelle)<br>
-* [ÉTAPE 7 : réfléchir au gameplay](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-7--gameplay)<br>
-* [ÉTAPE 8 : construire des niveaux](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-8--niveaux)<br>
-* [ÉTAPE 9 : ajouter du son](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-9--son)<br>
-* [ÉTAPE 10 : Idées pour aller plus loin !](https://github.com/b2renger/processing_physics_game_workshop#%C3%A9tape-10--aller-plus-loin-)<br>
+* [Decouverte - un jeu en 33 lignes de code](#Decouverte---un-jeu-en-33-lignes-de-code)<br>
+* [ETAPE 0 - un outil de dessin](#ETAPE-0---un-outil-de-dessin)<br>
+* [ETAPE 1 - se déplacer](#ETAPE-1---se-deplacer)<br>
+* [ETAPE 2 - écrire des fonctions sur mesure](#ETAPE-2---ecrire-des-fonctions-sur-mesure)<br>
+* [ETAPE 3 - écrire une classe](#ETAPE-3---ecrire-une-classe)<br>
+* [ETAPE 4 - instancier 100 objets à partir d'une classe](#ETAPE-4---instancier-100-objets-a-partir-d'une-classe)<br>
+* [ETAPE 5 - agents autonomes](#ETAPE-5---agents-autonomes)<br>
+* [ETAPE 6 - écrire des conditions](#ETAPE-6---ecrire-des-conditions)<br>
+* [ETAPE 7 - réfléchir au gameplay](#ETAPE-7---reflechir-au-gameplay)<br>
+* [ETAPE 8 - construire des niveaux](#ETAPE-8---construire-des-niveaux)<br>
+* [ETAPE 9 - ajouter du son](#ETAPE-9---ajouter-du-son)<br>
+* [ETAPE 10 - aller plus loin !](#ETAPE-10---aller-plus-loin-!)<br>
 
 
-## Activité de découverte de processing
+## Decouverte - un jeu en 33 lignes de code
 
 Dans cette activité de découverte nous allons nous attacher à créer un jeu simple en quelques lignes de codes.
+- faire grandir un cercle en appuyant sur une touche
+- le faire rétrecir en appuyant sur une autre touche
+- définir une zone pour marquer des points avec deux cercles concentriques
+- si notre cercle mobile est entre les deux cercles : on marque des points sinon on en perd
+- afficher le score
 
+https://github.com/b2renger/processing_physics_game_workshop/blob/master/decouverte_circle_game/decouverte_circle_game.pde
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
+Ce jeu est très simple mais montre déjà l'étendu des possibilités avec très peu de lignes de code.
+On peut facilement augmenter la difficulté en changeant : la vitesse, l'écart entre les deux cercles, faire en sorte que cet écart varie ...
 
-## ÉTAPE 0 : Familiarisation par un outil de dessin simple
+[**home**](#Contenu)<br>
+
+## ETAPE 0 - un outil de dessin 
 
 
 ### Missions :
@@ -78,12 +90,10 @@ https://processing.org/reference/width.html
 
 https://processing.org/reference/height.html
 
-### Explication du code
-(todo)
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
+[**home**](#Contenu)<br>
 
-## ÉTAPE 1 : Se déplacer
+## ETAPE 1 - se deplacer
 
 
 ### Missions :
@@ -107,13 +117,11 @@ https://processing.org/reference/height.html
 ### Ressource :
 https://processing.org/reference/lerp_.html
 
-### Code :
-(TODO)
-
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
 
 
-## ÉTAPE 2 : Écrire des fonctions sur mesure
+[**home**](#Contenu)<br>
+
+## ETAPE 2 - Ecrire des fonctions sur mesure
 
 ### Missions :
 * Créer un effet graphique permettant d’afficher une traînée plus ou moins persistante lorsque notre cercle se déplace.
@@ -146,13 +154,9 @@ http://paulbourke.net/miscellaneous/interpolation/
 
 https://www.youtube.com/watch?v=zBo2D3Myo6Q
 
-### Code
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 3 : Écrire une classe - la programmation orientée objet
+## ETAPE 3 - Ecrire une classe 
 
 
 ### Mission :
@@ -190,13 +194,9 @@ https://processing.org/tutorials/objects/
 
 https://www.youtube.com/watch?v=YcbcfkLzgvs
 
-### Code :
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 4 : Instancier 100 objets à partir d’une classe 
+## ETAPE 4 - Instancier 100 objets a partir d’une classe 
 
 ### Mission :
 
@@ -222,13 +222,9 @@ https://processing.org/reference/for.html
 
 https://processing.org/reference/ArrayList.html
 
-### Code
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 5 : Les agents autonomes
+## ETAPE 5 - agents autonomes
 
 ### Missions :
 
@@ -251,13 +247,10 @@ https://processing.org/reference/random_.html
 
 https://processing.org/reference/noise_.html
 
-### Code
-(TODO)
-
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
+[**home**](#Contenu)<br>
 
 
-## ÉTAPE 6 : La notion de conditionnelle
+## ETAPE 6 - Ecrire des conditions
 
 ### Missions :
 * Intégrer à votre code précédent un cercle qui suit la souris.
@@ -292,13 +285,9 @@ https://processing.org/reference/frameCount.html
 
 https://processing.org/reference/modulo.html
 
-### Code
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 7 : Gameplay
+## ETAPE 7 - Reflechir au gameplay
 
 ### Missions :
 * Créer deux ArrayList : un qui stockera les agents à attraper (dessinés en blanc) et un qui stockera les agents à ne pas attraper (dessinés en rouge)
@@ -315,14 +304,10 @@ https://processing.org/reference/modulo.html
 ### Ressources
 https://processing.org/reference/text_.html
 
-### Code
-(TODO)
-
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
+[**home**](#Contenu)<br>
 
 
-
-## ÉTAPE 8 : Niveaux
+## ETAPE 8 - Construire des niveaux
 
 ### Missions :
 * Construire une progression avec différents niveaux qui s’enchaînent avec une difficulté croissante à l’aide d’une classe
@@ -344,13 +329,9 @@ https://processing.org/reference/text_.html
 * Est-ce que les ennemies disparaissent aussi ? ou restent-ils affichés ?
 * Est-ce qu’il y a un nombre maximum d’ennemies ou d’agents dans un niveau ?
 
-### Code 
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 9 : Son
+## ETAPE 9 - Ajouter du son
 
 
 ### Missions :
@@ -363,13 +344,9 @@ https://processing.org/reference/text_.html
 https://processing.org/reference/libraries/sound/index.html
 https://freesound.org/
 
-### Code
-(TODO)
+[**home**](#Contenu)<br>
 
-[^home](https://github.com/b2renger/processing_physics_game_workshop#contenu)<br>
-
-
-## ÉTAPE 10 : Aller plus loin …
+## ETAPE 10 - Aller plus loin !
 
 
 Si vous avez réussi à atteindre cette étape : toutes nos félicitations ! Il est maintenant temps d’aller plus loin; il serait possible par exemple :
@@ -381,4 +358,6 @@ Si vous avez réussi à atteindre cette étape : toutes nos félicitations ! Il 
 * de créer un système à particule pour égayer les collisions
 * modifier le gameplay pour en faire un jeux à deux joueurs
 * de déployer votre jeu sur android ! (processing dispose d'un excellent mode android permettant de déployer votre code directement sur votre téléphone ou tablette !)
-* ou tout autre idée qui vous viendrait à l’esprit … n’hésitez pas à nous solliciter
+* ou tout autre idée qui vous viendrait à l’esprit 
+
+[**home**](#Contenu)<br>
