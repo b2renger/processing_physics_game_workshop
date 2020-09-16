@@ -1,0 +1,29 @@
+étape 1 : 
+	Dessiner une ellipse rose
+étape 2 : 
+	Faire diminuer la taille de l'ellipse
+étape 3 : 
+	Utiliser le clavier pour faire grandir ou retrecir la taille de l'ellipse
+étape 4 : 
+	Dessiner une petite ellipse et une grande en rouge
+étape 5 : 
+	Ajouter un score qui diminue lorsque l'ellipse 
+	n'est pas entre la petite et la grande
+étape 6 : 
+	Afficher ce score.
+étape 7 : 
+	Ajouter la condition de défaite.
+	score <= à 0
+étape 8 :
+	Ajouter une fonction restart. pour relancer la partie après une défaite.
+étape 9 : 
+	Ajouter une condition de victoire.
+	si le joueur survie plus de 30 secondes il gagne.
+étape 10 : 
+	Ajouter une progression durant la partie.
+	la partie dure 2 minutes, toutes les 30 secondes la "safe zone" diminue
+	et la vitesse augmente. 
+	
+	
+
+

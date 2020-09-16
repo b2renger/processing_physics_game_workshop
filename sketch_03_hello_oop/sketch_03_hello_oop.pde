@@ -1,7 +1,5 @@
 /*
 Object : understand how to write and use a a class
- 
- 
  */
 
 Ball balle;
